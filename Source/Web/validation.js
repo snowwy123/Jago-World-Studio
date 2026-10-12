@@ -1,0 +1,8 @@
+'use strict';
+const validateExpandedProject=validateProject;
+validateProject=function(w){validateExpandedProject(w);const validId=id=>typeof id==='string'&&/^[\w-]{1,100}$/.test(id),short=(s,n=200000)=>typeof s==='string'&&s.length<=n;
+const collections=[w.folders,w.savedSearches,w.entryTemplates,w.questions,w.plotThreads,w.boards,w.snapshots,w.calendarModel.festivals,...w.entries.flatMap(e=>[e.lifeStages,e.accounts]),...w.documents.map(d=>d.branches),...w.boards.map(b=>b.cards),...w.maps.map(m=>m.historyStates)];for(const list of collections){const ids=new Set();for(const item of list){if(!item||!validId(item.id)||ids.has(item.id))throw Error('A world section has an invalid or duplicate identifier.');ids.add(item.id);}}
+for(const f of w.folders)if(!short(f.name,300)||typeof f.parentId!=='string')throw Error('Invalid folder.');
+for(const b of w.boards){if(!short(b.name,300)||!Array.isArray(b.cards)||b.cards.length>1000)throw Error('Invalid reference board.');for(const c of b.cards)if(!short(c.name,300)||!short(c.text)||c.color&&!/^#[0-9a-f]{6}$/i.test(c.color))throw Error('Invalid reference card.');}
+for(const m of w.maps){if(!Number.isFinite(m.loop.seconds)||m.loop.seconds<.25||m.loop.seconds>180||!Number.isInteger(m.loop.fps)||m.loop.fps<1||m.loop.fps>24)throw Error('Invalid map loop settings.');const g=m.terrain?.grid||m.grid;if(g){const size=g.cols*g.rows;for(const key of ['height','land','filled','parent'])if(!Array.isArray(g[key])||g[key].length!==size||g[key].some(n=>!Number.isFinite(n)))throw Error('Invalid terrain grid.');}for(const o of m.objects)for(const k of ['labelDx','labelDy','labelSize'])if(o[k]!==undefined&&!Number.isFinite(o[k]))throw Error('Invalid label placement.');}
+return w;};

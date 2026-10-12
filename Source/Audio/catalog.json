@@ -1,0 +1,61 @@
+[
+  {
+    "id": "calm",
+    "name": "Calm Ambient 2",
+    "file": "Calm-Ambient-2.mp3",
+    "mime": "audio/mpeg",
+    "kind": "Music",
+    "credit": "The Cynic Project / cynicmusic.com / pixelsphere.org",
+    "license": "CC0",
+    "url": "https://opengameart.org/content/calm-ambient-2-synthwave-15k"
+  },
+  {
+    "id": "book-open",
+    "name": "Opening a book",
+    "file": "bookOpen.ogg",
+    "mime": "audio/ogg",
+    "kind": "Sound effect"
+  },
+  {
+    "id": "book-page",
+    "name": "Turning a page",
+    "file": "bookFlip1.ogg",
+    "mime": "audio/ogg",
+    "kind": "Sound effect"
+  },
+  {
+    "id": "door-open",
+    "name": "Door mechanism · one-shot cue",
+    "file": "Door-Open-Clear.wav",
+    "mime": "audio/wav",
+    "kind": "Sound effect"
+  },
+  {
+    "id": "door-close",
+    "name": "Closing a door",
+    "file": "doorClose_1.ogg",
+    "mime": "audio/ogg",
+    "kind": "Sound effect"
+  },
+  {
+    "id": "footstep",
+    "name": "Walking · repeating footsteps",
+    "file": "Walking-Sequence.wav",
+    "mime": "audio/wav",
+    "kind": "Ambience"
+  },
+  {
+    "id": "coins",
+    "name": "Handling coins",
+    "file": "handleCoins.ogg",
+    "mime": "audio/ogg",
+    "kind": "Sound effect"
+  },
+  {
+    "id": "latch",
+    "name": "Metal latch",
+    "file": "metalLatch.ogg",
+    "mime": "audio/ogg",
+    "kind": "Sound effect"
+  }
+]
