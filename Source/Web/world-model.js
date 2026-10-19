@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT · Cameron Jago Lis Illustrates · 2026 */
 'use strict';
-const WORLD_VERSION='0.21.0';
+const WORLD_VERSION='0.23.0';
 const APP_THEMES={jago:'Jago · light',dark:'Jago · dark',fantasy:'The archivist',space:'Mission control',storybook:'The storybook'};
 const WORLD_KINDS=['world','region','city','building','space','system'];
 let worldYear=null,knowledgeViewer='',connectionMode='all',folderFilter='',savedQuery='',showNearby=true,storySelection=null,boardSelection=null,viewMapMode='geography',mapPlayback=false,mediaClock=0,animationRAF=null,mapYear=null;
