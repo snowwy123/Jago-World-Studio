@@ -9,13 +9,14 @@ modules.push('kit-creator','map-living-detail','world-workshop-expansion','map-h
 modules.push('space-architecture','family-studio','world-continuity','generation-review','manual-workshop','environment-fields','site-architecture-depth','studio-usability-round','refinement-showcases','local-generation','map-furniture-workshop','consolidation-workflows');
 const fonts=[['Cinzel','Cinzel.ttf'],['IM Fell English','IM-Fell-English.ttf'],['Rajdhani','Rajdhani.ttf']];
 modules.push('studio-completion','suite-round','portrait-workshop','family-workshop');
-modules.push('world-refresher','harbour-refresher');
+modules.push('world-refresher','harbour-refresher','authoring-ux','coast-analysis','world-book','choice-reader','generation-guard','book-presentations','aster-quay-study');
 const fontCSS=fonts.map(([name,file])=>`@font-face{font-family:'${name}';src:url(data:font/ttf;base64,${fs.readFileSync(path.join(__dirname,'Fonts',file)).toString('base64')}) format('truetype');font-weight:100 900;font-display:swap;}`).join('\n');
 const audio=JSON.parse(fs.readFileSync(path.join(__dirname,'Audio/catalog.json'),'utf8')).map(a=>{const data=fs.readFileSync(path.join(__dirname,'Audio',a.file));return {...a,credit:a.credit||'Kenney',license:a.license||'CC0',url:a.url||'https://kenney.nl/assets/rpg-audio',bytes:data.length,src:'data:'+a.mime+';base64,'+data.toString('base64')};});
 const js='const JAGO_STARTER_AUDIO='+JSON.stringify(audio)+';\nconst BUNDLED_FONT_CSS='+JSON.stringify(fontCSS)+';\n'+modules.map(n=>fs.readFileSync(path.join(web,n+'.js'),'utf8')).join('\n');
 new(require('vm').Script)(js);
 let html=fs.readFileSync(path.join(web,'shell.html'),'utf8');
 html=html.replace('/*STYLE*/',()=>fontCSS+'\n'+['style','expansion','next','cartography','story-workspace','map-refinement','living-world','next-stage','map-usability','workshop','appearance','studio-completion'].map(n=>fs.readFileSync(path.join(web,n+'.css'),'utf8')).join('\n')).replace('/*APP*/',()=>js.replace(/<\/script/gi,'<\\/script'));
+const previewInjectionAt=html.lastIndexOf('</body>');html=html.slice(0,previewInjectionAt)+'<script>'+fs.readFileSync(path.join(__dirname,'project-preview.js'),'utf8').replace(/<\/script/gi,'<\\/script')+'</script>'+html.slice(previewInjectionAt);
 fs.writeFileSync(path.join(root,'Jago-Worldbuilding-Studio.html'),html);fs.writeFileSync(path.join(root,'index.html'),html);console.log('Offline HTML built with map assets and fonts.');
 
 
